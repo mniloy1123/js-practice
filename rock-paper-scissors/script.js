@@ -9,6 +9,7 @@ playRound = (playerSelection, computerSelection) => {
   const formatPlayerSelection =
     playerSelection.charAt(0).toUpperCase() +
     playerSelection.slice(1).toLowerCase();
+
   if (formatPlayerSelection === computerSelection) {
     return "It's a Draw!";
   } else if (
@@ -21,8 +22,32 @@ playRound = (playerSelection, computerSelection) => {
   return `You Lose! ${computerSelection} beats ${formatPlayerSelection}`;
 };
 
-const playerSelection = "paper";
-console.log(`Player Selection: ${playerSelection}`);
-const computerSelection = getComputerChoice();
-console.log(`Computer Selection: ${computerSelection}`);
-console.log(playRound(playerSelection, computerSelection));
+game = () => {
+  let countPlayerWins = 0;
+  let countComputerWins = 0;
+  for (i = 0; i < 5; i++) {
+    const playerSelection = "paper";
+    const computerSelection = getComputerChoice();
+    const result = playRound(playerSelection, computerSelection);
+
+    console.log(`Round ${i + 1} - Player Selection: ${playerSelection}`);
+    console.log(`Round ${i + 1} - Computer Selection: ${computerSelection}`);
+    console.log(`Round ${i + 1} - ${result}`);
+
+    if (result.includes("You Win!")) countPlayerWins++;
+    else if (result.includes("You Lose!")) countComputerWins++;
+  }
+  console.log(`Player wins: ${countPlayerWins}`);
+  console.log(`Computer wins: ${countComputerWins}`)
+  
+  if (countPlayerWins > countComputerWins) {
+    console.log("You won the game!");
+  } else if (countPlayerWins < countComputerWins) {
+    console.log("Computer won the game!");
+  } else {
+    console.log("The game is a draw!");
+  }
+
+};
+
+console.log(game());
