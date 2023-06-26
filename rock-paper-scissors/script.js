@@ -26,7 +26,7 @@ game = () => {
   let countPlayerWins = 0;
   let countComputerWins = 0;
   for (i = 0; i < 5; i++) {
-    const playerSelection = "paper";
+    const playerSelection = prompt("Rock, Paper, or Scissors?:" );
     const computerSelection = getComputerChoice();
     const result = playRound(playerSelection, computerSelection);
 
