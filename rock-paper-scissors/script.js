@@ -5,27 +5,20 @@ getComputerChoice = () => {
   else return "Scissors";
 };
 
-
 playRound = (playerSelection, computerSelection) => {
   const formatPlayerSelection =
     playerSelection.charAt(0).toUpperCase() +
     playerSelection.slice(1).toLowerCase();
-
-  if (formatPlayerSelection === "Rock" && computerSelection === "Scissors") {
-    return "You Win! Rock beats Scissors";
-  } else if (formatPlayerSelection === "Rock" && computerSelection === "Paper") {
-    return "You Lose! Paper beats Rock";
-  } else if (formatPlayerSelection === "Paper" && computerSelection === "Rock") {
-    return "You Win! Paper beats Rock";
-  } else if (formatPlayerSelection === "Paper" && computerSelection === "Scissors") {
-    return "You Lose! Scissors beats Paper";
-  } else if (formatPlayerSelection === "Scissors" && computerSelection === "Paper") {
-    return "You Win! Scissors beats Paper";
-  } else if (formatPlayerSelection === "Scissors" && computerSelection === "Rock") {
-    return "You Lose! Rock beats Scissors";
-  } else if (formatPlayerSelection === computerSelection) {
-    return "It's a draw!"
+  if (formatPlayerSelection === computerSelection) {
+    return "It's a Draw!";
+  } else if (
+    (formatPlayerSelection === "Rock" && computerSelection === "Scissors") ||
+    (formatPlayerSelection === "Paper" && computerSelection === "Rock") ||
+    (formatPlayerSelection === "Scissors" && computerSelection === "Paper")
+  ) {
+    return `You Win! ${formatPlayerSelection} beats ${computerSelection}`;
   }
+  return `You Lose! ${computerSelection} beats ${formatPlayerSelection}`;
 };
 
 const playerSelection = "paper";
