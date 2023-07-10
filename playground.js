@@ -120,3 +120,4 @@ const elem = document.querySelector("#myId");
 elem.addEventListener('click', (event) => {
     console.log(event.target.value)
 })
+
